@@ -1,294 +1,599 @@
+
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLEEPLUX | Handcrafted Cotton Mattresses</title>
-  <style>
-    /* Global Styles */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLEEPLUX | Handcrafted Cotton Mattresses</title>
 
-    body {
-      background-color: #0d0d0d;
-      color: #f5f5f5;
-      line-height: 1.6;
-    }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    /* Header & Navigation */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080808;
+    color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+:root {
+    --gold: #d6ad55;
+    --gold-light: #f5d98b;
+    --black: #080808;
+    --card: #141414;
+}
+
+header {
+    width: 100%;
+    padding: 20px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #292116;
+    background: #080808;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    color: var(--gold);
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-shadow: 0 0 15px #b88b35;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #eee;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+.hero {
+    min-height: 580px;
+    padding: 55px 7%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
+}
+
+.hero-content h1 {
+    color: var(--gold);
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    color: #c5c5c5;
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+.tagline {
+    color: var(--gold-light) !important;
+    letter-spacing: 1px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    border: 1px solid #80632d;
+    border-radius: 12px;
+    box-shadow: 0 0 30px #a77b2630;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 13px 27px;
+    background: linear-gradient(135deg, #f1d58b, #b88b35);
+    color: #080808;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #d6ad5570;
+}
+
+section {
+    padding: 75px 7%;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--gold);
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 40px;
+}
+
+.about {
+    background: #101010;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 850px;
+    margin: auto;
+    color: #ccc;
+    font-size: 16px;
+}
+
+.about-content p {
+    margin-bottom: 16px;
+}
+
+.founder-name {
+    color: var(--gold);
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+.fabric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.fabric-card {
+    background: var(--card);
+    border: 2px solid #292929;
+    border-radius: 10px;
+    padding: 12px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.fabric-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.fabric-card.selected {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px #d6ad5570;
+}
+
+.fabric-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.fabric-card h3 {
+    color: var(--gold);
+    text-align: center;
+    margin-top: 12px;
+    font-size: 16px;
+}
+
+.selected-status {
+    text-align: center;
+    color: var(--gold-light);
+    margin-top: 25px;
+    min-height: 25px;
+}
+
+.customizer {
+    background: #101010;
+}
+
+.selection-panel {
+    max-width: 650px;
+    margin: auto;
+    padding: 30px;
+    background: #171717;
+    border: 1px solid #5c4724;
+    border-radius: 12px;
+}
+
+.form-group {
+    margin-bottom: 23px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--gold);
+    margin-bottom: 9px;
+    font-weight: bold;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    color: white;
+    background: #090909;
+    border: 1px solid #6b542b;
+    border-radius: 5px;
+    outline: none;
+    font-size: 15px;
+}
+
+.form-group select:focus {
+    border-color: var(--gold-light);
+}
+
+.order-button {
+    width: 100%;
+    font-size: 16px;
+}
+
+.clients {
+    text-align: center;
+}
+
+.clients p {
+    color: #aaa;
+}
+
+footer {
+    padding: 30px 7%;
+    text-align: center;
+    background: #050505;
+    border-top: 1px solid #332719;
+    color: #999;
+}
+
+footer .footer-logo {
+    color: var(--gold);
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 8%;
-      background-color: #141414;
-      border-bottom: 1px solid #2a2a2a;
+        padding: 16px 5%;
+        flex-direction: column;
+        gap: 13px;
     }
 
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: #d4af37; /* Gold Accent */
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     nav a {
-      color: #ccc;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 0.95rem;
-      transition: color 0.3s;
+        font-size: 12px;
     }
 
-    nav a:hover {
-      color: #d4af37;
-    }
-
-    /* Hero Section */
     .hero {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-      text-align: center;
+        grid-template-columns: 1fr;
+        padding: 45px 6%;
+        text-align: center;
     }
 
-    .hero-img-container {
-      width: 100%;
-      max-height: 450px;
-      overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    .hero-image {
+        height: 270px;
     }
 
-    .hero-img-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-tag {
-      color: #d4af37;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-top: 25px;
-      font-weight: 600;
-    }
-
-    .hero-title {
-      font-size: 2.5rem;
-      margin: 10px 0;
-      color: #fff;
-    }
-
-    .hero-subtitle {
-      color: #aaa;
-      font-size: 1rem;
-      max-width: 600px;
-      margin: 0 auto 25px auto;
-    }
-
-    .btn-group {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .btn {
-      padding: 12px 24px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary {
-      background-color: #d4af37;
-      color: #000;
-      border: 1px solid #d4af37;
-    }
-
-    .btn-primary:hover {
-      background-color: #c59f2e;
-    }
-
-    .btn-outline {
-      border: 1px solid #444;
-      color: #fff;
-      background: transparent;
-    }
-
-    .btn-outline:hover {
-      border-color: #d4af37;
-      color: #d4af37;
-    }
-
-    /* Fabric Catalog Section */
-    .catalog-section {
-      max-width: 1000px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-
-    .section-tag {
-      color: #d4af37;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 25px;
+    section {
+        padding: 55px 6%;
     }
 
     .fabric-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .fabric-card {
-      background-color: #1a1a1a;
-      border: 2px solid #2a2a2a;
-      border-radius: 12px;
-      padding: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-
-    .fabric-card:hover {
-      border-color: #555;
-    }
-
-    /* Selected State */
-    .fabric-card.selected {
-      border-color: #d4af37;
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-      background-color: #222;
+        grid-template-columns: 1fr;
     }
 
     .fabric-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 12px;
+        height: 250px;
     }
 
-    .fabric-card p {
-      font-weight: 600;
-      color: #ddd;
+    .selection-panel {
+        padding: 20px;
     }
-
-    .selection-status {
-      margin-top: 20px;
-      padding: 15px;
-      background-color: #141414;
-      border-radius: 8px;
-      border-left: 4px solid #d4af37;
-      color: #aaa;
-      font-size: 0.95rem;
-    }
-
-    .selection-status span {
-      color: #fff;
-      font-weight: 600;
-    }
-  </style>
+}
+</style>
 </head>
+
 <body>
 
-  <!-- Navigation -->
-  <header>
+<header>
     <div class="logo">SLEEPLUX</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#fabrics">Fabric Catalog</a>
-      <a href="#design">Design Your Mattress</a>
-    </nav>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-img-container">
-      <!-- रिज़ॉर्ट/पूल की जगह गद्दे की फोटो बदल दी गई है -->
-      <img src="assets/images/mattress-hero.jpg" alt="Handcrafted Cotton Mattress" id="hero-img">
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#fabrics">Fabrics</a>
+        <a href="#design">Design Your Mattress</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+        <h1>SLEEPLUX</h1>
+
+        <p class="tagline">Every Detail Crafted with Care.</p>
+
+        <p>Handcrafted Cotton Mattresses • Made to Your Size</p>
+
+        <p>
+            Experience the comfort of handmade cotton mattresses,
+            carefully crafted with attention to every detail.
+        </p>
+
+        <a href="#design" class="btn">Design Your Mattress</a>
     </div>
 
-    <p class="hero-tag">Handcrafted Cotton Mattresses • 20+ Years Experience</p>
-    <h1 class="hero-title">Comfort, Crafted by Hand.</h1>
-    <p class="hero-subtitle">
-      Over 20+ years of trusted heritage in crafting premium handcrafted cotton mattresses for pure comfort and ultimate rest.
+    <div>
+        <!-- Replace this image path with your actual Hero mattress photo -->
+        <img
+            class="hero-image"
+            src="assets/images/mattress-hero.jpg"
+            alt="SLEEPLUX handcrafted cotton mattress"
+        >
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <h2 class="section-title">Our Story</h2>
+
+    <div class="about-content">
+
+        <p>
+            SLEEPLUX is built on the experience, dedication and
+            craftsmanship of our family.
+        </p>
+
+        <p>
+            Our founder, Shafiq Pinjari, comes from a middle-class
+            family. With determination and hard work, he started
+            his own mattress-making business and built his skills
+            through years of hands-on experience.
+        </p>
+
+        <p>
+            With 25 years of experience in mattress making,
+            Shafiq Pinjari continues to focus on quality,
+            comfort and careful craftsmanship.
+        </p>
+
+        <p>
+            His son, Shoaib Pinjari, also works alongside him
+            in the business. To help grow the family business
+            and bring its products to more customers, he started
+            the SLEEPLUX website.
+        </p>
+
+        <p>
+            Together, they continue the tradition of handcrafted
+            cotton mattresses.
+        </p>
+
+        <div class="founder-name">Shafiq Pinjari — Founder</div>
+        <div class="founder-name">Shoaib Pinjari — Founder’s Son</div>
+
+    </div>
+</section>
+
+<!-- FABRIC CATALOG -->
+<section id="fabrics">
+
+    <h2 class="section-title">Fabric Collection</h2>
+
+    <p class="section-subtitle">
+        Choose your preferred fabric for your mattress.
     </p>
 
-    <div class="btn-group">
-      <a href="#fabrics" class="btn btn-primary">Design Your Mattress</a>
-      <a href="#fabrics" class="btn btn-outline">View Fabric Catalog</a>
-    </div>
-  </section>
-
-  <!-- Fabric Catalog Section -->
-  <section class="catalog-section" id="fabrics">
-    <p class="section-tag">Choose Your Fabric</p>
-    <h2 class="section-title">Explore Our Fabric Catalog</h2>
-
     <div class="fabric-grid">
-      <!-- Fabric Card 1 -->
-      <div class="fabric-card" data-fabric-name="Floral Red Pattern" onclick="selectFabric(this)">
-        <img src="assets/fabrics/Fabric-1.jpg" alt="Floral Red Pattern">
-        <p>Floral Red Pattern</p>
-      </div>
 
-      <!-- Fabric Card 2 -->
-      <div class="fabric-card" data-fabric-name="Traditional Checkered" onclick="selectFabric(this)">
-        <img src="assets/fabrics/IMG_20261026_1.jpg" alt="Traditional Checkered">
-        <p>Traditional Checkered</p>
-      </div>
+        <div class="fabric-card" onclick="selectFabric(this, 'Fabric 1')">
+            <img
+                src="https://drive.google.com/thumbnail?id=1sF3Mz29LTfQwJJh4TEbT1ZmgKhnD3AEW&sz=w1200"
+                alt="Fabric 1"
+            >
+            <h3>Fabric 1</h3>
+        </div>
 
-      <!-- Fabric Card 3 -->
-      <div class="fabric-card" data-fabric-name="Classic Damask Red" onclick="selectFabric(this)">
-        <img src="assets/fabrics/IMG_20261026_2.jpg" alt="Classic Damask Red">
-        <p>Classic Damask Red</p>
-      </div>
+        <div class="fabric-card" onclick="selectFabric(this, 'Fabric 2')">
+            <img
+                src="https://drive.google.com/thumbnail?id=15XUv2fCZm3uTpQK28_P14-b6IWNgSjgY&sz=w1200"
+                alt="Fabric 2"
+            >
+            <h3>Fabric 2</h3>
+        </div>
+
+        <div class="fabric-card" onclick="selectFabric(this, 'Fabric 3')">
+            <img
+                src="https://drive.google.com/thumbnail?id=10HU1OxAbiUFb23rwJI5crQGsCAdJDcGq&sz=w1200"
+                alt="Fabric 3"
+            >
+            <h3>Fabric 3</h3>
+        </div>
+
     </div>
 
-    <!-- Hidden input to store chosen fabric -->
-    <input type="hidden" id="selected-fabric-input" name="selected_fabric" value="">
+    <p class="selected-status" id="fabricStatus">
+        Please select a fabric.
+    </p>
 
-    <!-- Live Status Display -->
-    <div class="selection-status" id="status-box">
-      Selected Fabric: <span id="status-text">None (Please click on a fabric to select)</span>
+</section>
+
+<!-- DESIGN YOUR MATTRESS -->
+<section class="customizer" id="design">
+
+    <h2 class="section-title">Design Your Mattress</h2>
+
+    <p class="section-subtitle">
+        Select your preferred cotton and mattress details.
+    </p>
+
+    <div class="selection-panel">
+
+        <div class="form-group">
+            <label for="cotton">Select Cotton Type</label>
+
+            <select id="cotton">
+                <option value="">Choose Cotton Type</option>
+                <option value="Black Cotton">Black Cotton</option>
+                <option value="White Cotton">White Cotton</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="weight">Select Cotton Weight</label>
+
+            <select id="weight">
+                <option value="">Choose Cotton Weight</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="thickness">Select Mattress Thickness</label>
+
+            <select id="thickness">
+                <option value="">Choose Thickness</option>
+                <option value="3 Inches">3 Inches</option>
+                <option value="4 Inches">4 Inches</option>
+                <option value="5 Inches">5 Inches</option>
+                <option value="6 Inches">6 Inches</option>
+                <option value="7 Inches">7 Inches</option>
+                <option value="8 Inches">8 Inches</option>
+                <option value="9 Inches">9 Inches</option>
+                <option value="10 Inches">10 Inches</option>
+            </select>
+        </div>
+
+        <button class="btn order-button" onclick="sendOrder()">
+            Send Your Selection on WhatsApp
+        </button>
+
     </div>
-  </section>
 
-  <!-- JavaScript for Selection Logic -->
-  <script>
-    function selectFabric(element) {
-      // 1. Remove 'selected' class from all cards
-      const allCards = document.querySelectorAll('.fabric-card');
-      allCards.forEach(card => card.classList.remove('selected'));
+</section>
 
-      // 2. Add 'selected' class to clicked card
-      element.classList.add('selected');
+<!-- CLIENTS -->
+<section class="clients" id="clients">
 
-      // 3. Get Selected Fabric Name
-      const fabricName = element.getAttribute('data-fabric-name');
+    <h2 class="section-title">Our Clients</h2>
 
-      // 4. Update Hidden Input Value & UI Status
-      document.getElementById('selected-fabric-input').value = fabricName;
-      document.getElementById('status-text').innerText = fabricName;
+    <p>
+        Thank you to our customers for trusting our
+        handcrafted cotton mattresses.
+    </p>
+
+</section>
+
+<footer>
+
+    <div class="footer-logo">SLEEPLUX</div>
+
+    <p>Every Detail Crafted with Care.</p>
+
+    <p>Handcrafted Cotton Mattresses • Made to Your Size</p>
+
+    <p style="margin-top:15px;">
+        Contact: +91 7972717722
+    </p>
+
+    <p style="margin-top:10px;">
+        © 2026 SLEEPLUX. All Rights Reserved.
+    </p>
+
+</footer>
+
+<script>
+
+// Fabric selection
+let selectedFabric = "";
+
+function selectFabric(card, fabricName) {
+
+    document.querySelectorAll(".fabric-card").forEach(function(item) {
+        item.classList.remove("selected");
+    });
+
+    card.classList.add("selected");
+
+    selectedFabric = fabricName;
+
+    document.getElementById("fabricStatus").textContent =
+        "Selected Fabric: " + fabricName;
+}
+
+// Cotton weight options: 10 KG to 50 KG
+const weightSelect = document.getElementById("weight");
+
+for (let kg = 10; kg <= 50; kg++) {
+    const option = document.createElement("option");
+    option.value = kg + " KG";
+    option.textContent = kg + " KG";
+    weightSelect.appendChild(option);
+}
+
+// WhatsApp order message
+function sendOrder() {
+
+    const cotton = document.getElementById("cotton").value;
+    const weight = document.getElementById("weight").value;
+    const thickness = document.getElementById("thickness").value;
+
+    if (!selectedFabric || !cotton || !weight || !thickness) {
+        alert("Please select fabric, cotton type, cotton weight and thickness.");
+        return;
     }
-  </script>
+
+    const message =
+        "Hello SLEEPLUX,%0A%0A" +
+        "I am interested in a mattress.%0A%0A" +
+        "Fabric: " + encodeURIComponent(selectedFabric) + "%0A" +
+        "Cotton Type: " + encodeURIComponent(cotton) + "%0A" +
+        "Cotton Weight: " + encodeURIComponent(weight) + "%0A" +
+        "Thickness: " + encodeURIComponent(thickness) + "%0A%0A" +
+        "Please share more details.";
+
+    const phoneNumber = "917972717722";
+
+    window.open(
+        "https://wa.me/" + phoneNumber + "?text=" + message,
+        "_blank"
+    );
+}
+
+</script>
 
 </body>
-     </html>
-     
+</html>
+
+
