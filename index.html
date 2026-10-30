@@ -39,8 +39,7 @@ header {
     justify-content: space-between;
     border-bottom: 1px solid #292116;
     background: #080808;
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 100;
 }
 
@@ -252,6 +251,38 @@ section {
     font-size: 16px;
 }
 
+/* CONTACT SECTION */
+.contact {
+    background: #080808;
+    text-align: center;
+}
+
+.contact-content {
+    max-width: 650px;
+    margin: auto;
+    padding: 30px;
+    background: #141414;
+    border: 1px solid #5c4724;
+    border-radius: 12px;
+}
+
+.contact-content p {
+    color: #ccc;
+    margin-bottom: 12px;
+}
+
+.contact-number {
+    color: var(--gold-light);
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.contact-btn {
+    display: inline-block;
+    margin-top: 20px;
+}
+
 .clients {
     text-align: center;
 }
@@ -318,6 +349,10 @@ footer .footer-logo {
     .selection-panel {
         padding: 20px;
     }
+
+    .contact-content {
+        padding: 22px;
+    }
 }
 </style>
 </head>
@@ -332,6 +367,7 @@ footer .footer-logo {
         <a href="#about">About</a>
         <a href="#fabrics">Fabrics</a>
         <a href="#design">Design Your Mattress</a>
+        <a href="#contact">Contact</a>
     </nav>
 </header>
 
@@ -354,7 +390,6 @@ footer .footer-logo {
     </div>
 
     <div>
-        <!-- Replace this image path with your actual Hero mattress photo -->
         <img
             class="hero-image"
             src="assets/images/mattress-hero.jpg"
@@ -503,6 +538,35 @@ footer .footer-logo {
 
 </section>
 
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <h2 class="section-title">Contact Us</h2>
+
+    <p class="section-subtitle">
+        Have questions or want to know more about our mattresses?
+        Get in touch with us.
+    </p>
+
+    <div class="contact-content">
+
+        <p>For mattress enquiries and details, contact us directly.</p>
+
+        <div class="contact-number">+91 7972717722</div>
+
+        <a
+            class="btn contact-btn"
+            href="https://wa.me/917972717722"
+            target="_blank"
+            rel="noopener"
+        >
+            Contact Us on WhatsApp
+        </a>
+
+    </div>
+
+</section>
+
 <!-- CLIENTS -->
 <section class="clients" id="clients">
 
@@ -595,5 +659,3 @@ function sendOrder() {
 
 </body>
 </html>
-
-
